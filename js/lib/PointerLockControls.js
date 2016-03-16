@@ -6,13 +6,21 @@ THREE.PointerLockControls = function ( camera ) {
 
 	var scope = this;
 
-	camera.rotation.set( 0, 0, 0 );
+	//camera.rotation.set( 0, 0, 0 );
 
-	var pitchObject = new THREE.Object3D();
+	pitch_material = new THREE.MeshLambertMaterial({ color: 0xff6666 });
+	pitch_geometry = new THREE.CylinderGeometry( 1, 1, 3, 8 );
+
+	var pitchObject = new THREE.Mesh(pitch_geometry, pitch_material, 500);
 	pitchObject.add( camera );
 
-	var yawObject = new THREE.Object3D();
+	yaw_material = new THREE.MeshLambertMaterial({ color: 0xff5555 });
+	yaw_geometry = new THREE.CylinderGeometry( 1, 1, 3, 8 );
+
+	var yawObject = new THREE.Mesh(yaw_geometry, yaw_material);
+
 	yawObject.position.y = 10;
+
 	yawObject.add( pitchObject );
 
 	var PI_2 = Math.PI / 2;

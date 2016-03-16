@@ -4,7 +4,7 @@ function animate() {
 
 	if ( controlsEnabled ) {
 		raycaster.ray.origin.copy( controls.getObject().position );
-		raycaster.ray.origin.y -= 10;
+		//raycaster.ray.origin.y -= 10;
 
 		var intersections = raycaster.intersectObjects( objects );
 
@@ -17,6 +17,10 @@ function animate() {
 		velocity.z -= velocity.z * 10.0 * delta;
 
 		velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
+
+		if (isOnObject) 
+			console.log(intersections[0].distance+"-"+controls.getObject().position.y);
+
 
 		if ( moveForward ) velocity.z -= 400.0 * delta;
 		if ( moveBackward ) velocity.z += 400.0 * delta;

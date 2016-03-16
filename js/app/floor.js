@@ -46,5 +46,7 @@ function floor () {
 	material = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } );
 
 	mesh = new THREE.Mesh( geometry, material );
+
+	objects.push(mesh);
 	scene.add( mesh );
 }

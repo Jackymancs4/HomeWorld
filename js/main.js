@@ -23,6 +23,8 @@ var moveLeft = false;
 var moveRight = false;
 var canJump = false;
 
+var dist=1000;
+
 var prevTime = performance.now();
 var velocity = new THREE.Vector3();
 
