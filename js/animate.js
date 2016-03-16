@@ -18,10 +18,6 @@ function animate() {
 
 		velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
 
-		if (isOnObject) 
-			console.log(intersections[0].distance+"-"+controls.getObject().position.y);
-
-
 		if ( moveForward ) velocity.z -= 400.0 * delta;
 		if ( moveBackward ) velocity.z += 400.0 * delta;
 
@@ -30,7 +26,8 @@ function animate() {
 
 		if ( isOnObject === true ) {
 			velocity.y = Math.max( 0, velocity.y );
-
+			controls.getObject().translateY(7.5-intersections[0].distance);
+			controls.getPObject().translateY(7.5-intersections[0].distance);
 			canJump = true;
 		}
 
@@ -38,10 +35,15 @@ function animate() {
 		controls.getObject().translateY( velocity.y * delta );
 		controls.getObject().translateZ( velocity.z * delta );
 
+		controls.getPObject().translateX( velocity.x * delta );
+		controls.getPObject().translateY( velocity.y * delta );
+		controls.getPObject().translateZ( velocity.z * delta );
+
 		if ( controls.getObject().position.y < 10 ) {
 
 			velocity.y = 0;
 			controls.getObject().position.y = 10;
+			controls.getPObject().position.y = 0;
 
 			canJump = true;
 

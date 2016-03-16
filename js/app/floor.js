@@ -1,19 +1,9 @@
 function floor () {
 
-   	var segment=32;
-    var fact=16;
-    var mult=80;
-    var trasl=0;
-    var barr=1;
-    var level=2.5;
-
 	var simplex = new SimplexNoise();
 
 	geometry = new THREE.PlaneGeometry( 2000, 2000, segment+1, segment+1);
 	geometry.rotateX( - Math.PI / 2 );
-		
-	var terrainGeneration = new TerrainGeneration(2000, 2000, segment, 10);
-	var terrainn = terrainGeneration.diamondSquare();
 
 	var index = 0;
 	for(var i = 0; i <= segment; i++) {

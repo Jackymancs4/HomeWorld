@@ -2,7 +2,7 @@
 
 function init() {
 
-	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 	scene = new THREE.Scene();
 	scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
@@ -13,6 +13,8 @@ function init() {
 
 	controls = new THREE.PointerLockControls( camera );
 	scene.add( controls.getObject() );
+	scene.add( controls.getPObject() );
+
 
 	var onKeyDown = function ( event ) {
 
@@ -77,7 +79,7 @@ function init() {
 	document.addEventListener( 'keydown', onKeyDown, false );
 	document.addEventListener( 'keyup', onKeyUp, false );
 
-	floor();
+	//floor();
 	//grid();
 
 	// cubes
@@ -91,12 +93,12 @@ function init() {
 
 	scene.add(cube);
 
-	var geometry = new THREE.PlaneBufferGeometry( 500, 500 );
-	geometry.rotateX( - Math.PI / 2 );	
-	plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: true, color: "#ff0000"} ) );
-	plane.position.set(0,0,0);
+	//var geometry = new THREE.PlaneBufferGeometry( 500, 500 );
+	//geometry.rotateX( - Math.PI / 2 );	
+	//plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: true, color: "#ff0000"} ) );
+	//plane.position.set(0,0,0);
 
-	scene.add( plane );
+	//sscene.add( plane );
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setClearColor( 0xffffff );

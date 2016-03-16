@@ -6,20 +6,25 @@ THREE.PointerLockControls = function ( camera ) {
 
 	var scope = this;
 
-	//camera.rotation.set( 0, 0, 0 );
+	//camera.position.set( 0, 30, 0 );
+	//camera.lookAt(new THREE.Vector3(0,0,0));
 
 	pitch_material = new THREE.MeshLambertMaterial({ color: 0xff6666 });
 	pitch_geometry = new THREE.CylinderGeometry( 1, 1, 3, 8 );
-
 	var pitchObject = new THREE.Mesh(pitch_geometry, pitch_material, 500);
+	
 	pitchObject.add( camera );
 
 	yaw_material = new THREE.MeshLambertMaterial({ color: 0xff5555 });
 	yaw_geometry = new THREE.CylinderGeometry( 1, 1, 3, 8 );
-
 	var yawObject = new THREE.Mesh(yaw_geometry, yaw_material);
 
 	yawObject.position.y = 10;
+
+	player_material = new THREE.MeshLambertMaterial({ color: 0xff5555 });
+	player_geometry = new THREE.CylinderGeometry( 1, 1, 7.5, 8 );
+	var playerObject = new THREE.Mesh(player_geometry, player_material);
+	playerObject.position.set(0,0,0);
 
 	yawObject.add( pitchObject );
 
@@ -32,6 +37,7 @@ THREE.PointerLockControls = function ( camera ) {
 		var movementX = event.movementX || 0;
 		var movementY = event.movementY || 0;
 
+		playerObject.rotation.y -= movementX * 0.002;
 		yawObject.rotation.y -= movementX * 0.002;
 		pitchObject.rotation.x -= movementY * 0.002;
 
@@ -52,6 +58,12 @@ THREE.PointerLockControls = function ( camera ) {
 	this.getObject = function () {
 
 		return yawObject;
+
+	};
+
+	this.getPObject = function () {
+
+		return playerObject;
 
 	};
 

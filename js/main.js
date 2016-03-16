@@ -1,19 +1,30 @@
+//Base
 
-var camera, scene, renderer;
+
+var scene, renderer;
 var geometry, material, mesh;
 var controls;
 
 var objects = [];
 
-var blocker = document.getElementById( 'blocker' );
-var instructions = document.getElementById( 'instructions' );
+//Terrain
 
-var plane, cube;
-var mouse, raycaster, rayl, isShiftDown = false;
-var rollOverMesh, rollOverMaterial;
-var cubeGeo, cubeMaterial;
+var dim=2048;
+var clusterdim=128;
+var segment=32;
+var fact=16;
+var mult=50;
+var trasl=0;
+var barr=1;
+var level=2.5;
 
-LCC();
+//Character
+
+var camera;
+var raycaster;
+var mouse;
+var isShiftDown = false;
+
 
 var controlsEnabled = false;
 
@@ -23,10 +34,16 @@ var moveLeft = false;
 var moveRight = false;
 var canJump = false;
 
-var dist=1000;
-
 var prevTime = performance.now();
 var velocity = new THREE.Vector3();
+
+//Document
+
+var blocker = document.getElementById( 'blocker' );
+var instructions = document.getElementById( 'instructions' );
+LCC();
+
+//Start
 
 init();
 animate();
