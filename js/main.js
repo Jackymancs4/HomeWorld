@@ -9,14 +9,14 @@ var objects = [];
 
 //Terrain
 
-var dim=2048;
-var clusterdim=128;
-var segment=32;
-var fact=16;
-var mult=50;
-var trasl=0;
-var barr=1;
-var level=2.5;
+var dim = 2048;
+var clusterdim = 128;
+var segment = 32;
+var fact = 16;
+var mult = 50;
+var trasl = 0;
+var barr = 1;
+var level = 2.5;
 
 //Character
 
@@ -39,8 +39,8 @@ var velocity = new THREE.Vector3();
 
 //Document
 
-var blocker = document.getElementById( 'blocker' );
-var instructions = document.getElementById( 'instructions' );
+var blocker = document.getElementById('blocker');
+var instructions = document.getElementById('instructions');
 LCC();
 
 //Start
